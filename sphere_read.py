@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 import re
 
 class SphereData(object):
@@ -70,3 +72,17 @@ class SphereData(object):
         plot = ax.contourf(theta, r, log(self.intensity_data[wavelength][direction]), 1000)
         plt.colorbar(plot, ax=ax)
         plt.show()
+
+
+def main(args):
+    if len(args) == 3:
+        sphere_data = SphereData(args[1])
+        sphere_data.plot(int(args[2]))
+    else:
+        print "Please specify a file and a wavelength"
+
+        
+if __name__ == '__main__':
+    from sys import argv
+    main(argv)
+
